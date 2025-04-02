@@ -1,7 +1,9 @@
+// deno-lint-ignore-file
 import { db } from "../config/database.ts";
 import { Dream, CreateDreamDto } from "../models/dream.ts";
 
 export class DreamService {
+  static getUserDreamStats: any;
   static async createDream(
     userId: string,
     createDreamDto: CreateDreamDto

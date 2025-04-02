@@ -2,6 +2,7 @@ import { Application } from "https://deno.land/x/oak@v17.1.4/mod.ts";
 import userRouter from "./controllers/userController.ts";
 import searchRouter from "./controllers/searchController.ts";
 import adminRouter from "./controllers/adminController.ts";
+import lucidTrainingRouter from "./controllers/lucidTrainingController.ts";
 
 const app = new Application();
 
@@ -24,6 +25,8 @@ app.use(searchRouter.routes());
 app.use(searchRouter.allowedMethods());
 app.use(adminRouter.routes());
 app.use(adminRouter.allowedMethods());
+app.use(lucidTrainingRouter.routes());
+app.use(lucidTrainingRouter.allowedMethods());
 
 const port = 8000;
 console.log(`Server running on http://localhost:${port}`);
