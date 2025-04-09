@@ -10,4 +10,4 @@ CREATE TABLE IF NOT EXISTS dream_images (
         ON DELETE CASCADE
 );
 
-CREATE INDEX idx_dream_images_dream_id ON dream_images(dream_id);
+CREATE INDEX IF NOT EXISTS idx_dream_images_dream_id ON dream_images(dream_id);

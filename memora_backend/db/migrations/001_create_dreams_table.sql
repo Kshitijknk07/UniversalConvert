@@ -1,4 +1,9 @@
-CREATE TYPE dream_type AS ENUM ('lucid', 'nightmare', 'fantasy', 'regular');
+DO $$ 
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'dream_type') THEN
+        CREATE TYPE dream_type AS ENUM ('lucid', 'nightmare', 'fantasy', 'regular');
+    END IF;
+END $$;
 
 CREATE TABLE IF NOT EXISTS dreams (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -11,4 +16,4 @@ CREATE TABLE IF NOT EXISTS dreams (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_dreams_user_id ON dreams(user_id);
+CREATE INDEX IF NOT EXISTS idx_dreams_user_id ON dreams(user_id);

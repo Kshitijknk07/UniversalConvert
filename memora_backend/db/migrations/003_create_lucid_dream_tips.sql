@@ -1,4 +1,9 @@
-CREATE TYPE tip_difficulty AS ENUM ('beginner', 'intermediate', 'advanced');
+DO $$ 
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'tip_difficulty') THEN
+        CREATE TYPE tip_difficulty AS ENUM ('beginner', 'intermediate', 'advanced');
+    END IF;
+END $$;
 
 CREATE TABLE IF NOT EXISTS lucid_dream_tips (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,

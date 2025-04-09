@@ -1,8 +1,8 @@
-import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
+import { Client } from "postgres";
 
 const client = new Client({
   user: "postgres",
-  password: "your_password",
+  password: "postgres",
   database: "memora_db",
   hostname: "localhost",
   port: 5432,
