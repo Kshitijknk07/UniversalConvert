@@ -11,12 +11,18 @@ import {
   Clock,
   FileText,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
   const [] = useState<File | null>(null);
   const [selectedConversion, setSelectedConversion] = useState<string | null>(
     null
   );
+
+  const handleConvertNow = () => {
+    navigate("/dashboard");
+  };
 
   const conversionTypes = [
     { name: "PDF to Word", icon: <FileText className="h-4 w-4" /> },
@@ -71,7 +77,6 @@ export default function LandingPage() {
         </header>
 
         <main className="relative grid h-[calc(100vh-88px)] grid-cols-1 lg:grid-cols-2">
-          {/* Gradient blob - positioned better */}
           <div
             className="absolute right-0 top-0 h-[300px] w-[300px] animate-pulse rounded-full bg-gradient-to-br from-pink-400 via-orange-300 to-yellow-200 opacity-40 blur-3xl"
             aria-hidden="true"
@@ -93,7 +98,10 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-6 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <Button className="rounded-full px-6 py-5">
+              <Button
+                className="rounded-full px-6 py-5"
+                onClick={handleConvertNow}
+              >
                 CONVERT NOW
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
