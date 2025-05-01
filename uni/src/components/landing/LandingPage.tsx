@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
-  Upload,
   FileType,
   ArrowRight,
   Check,
@@ -14,7 +13,7 @@ import {
 } from "lucide-react";
 
 export default function LandingPage() {
-  const [, setSelectedFile] = useState<File | null>(null);
+  const [] = useState<File | null>(null);
   const [selectedConversion, setSelectedConversion] = useState<string | null>(
     null
   );
@@ -94,20 +93,6 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-6 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <Button
-                variant="outline"
-                className="rounded-full border-2 px-6 py-5"
-                onClick={() => document.getElementById("fileInput")?.click()}
-              >
-                <Upload className="mr-2 h-4 w-4" />
-                UPLOAD FILE
-              </Button>
-              <input
-                id="fileInput"
-                type="file"
-                className="hidden"
-                onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
-              />
               <Button className="rounded-full px-6 py-5">
                 CONVERT NOW
                 <ArrowRight className="ml-2 h-4 w-4" />
