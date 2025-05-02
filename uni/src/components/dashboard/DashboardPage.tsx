@@ -9,18 +9,16 @@ import RecentConversions from "./RecentConversions";
 export default function DashboardPage() {
   return (
     <div className="h-screen overflow-hidden bg-[#f8f8f8]">
-      <div className="h-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col h-full">
         <Header />
 
-        <main className="flex-1 py-3 overflow-hidden">
-          <div className="h-full grid grid-cols-1 gap-4 lg:grid-cols-4">
-            {/* Sidebar */}
+        <main className="flex-1 py-6 overflow-hidden">
+          <div className="h-full grid grid-cols-1 gap-6 lg:grid-cols-4">
             <div className="lg:col-span-1 h-full">
               <Sidebar />
             </div>
 
-            {/* Main Content */}
-            <div className="lg:col-span-3 space-y-4 h-full overflow-hidden flex flex-col">
+            <div className="lg:col-span-3 space-y-6 h-full overflow-hidden flex flex-col">
               <Stats />
               <FileConversion />
               <RecentConversions />
@@ -29,7 +27,6 @@ export default function DashboardPage() {
         </main>
       </div>
 
-      {/* Enhanced gradient effects */}
       <div
         className="fixed right-0 top-0 h-[500px] w-[500px] animate-pulse rounded-full bg-gradient-to-br from-pink-400 via-orange-300 to-yellow-200 opacity-30 blur-3xl"
         aria-hidden="true"

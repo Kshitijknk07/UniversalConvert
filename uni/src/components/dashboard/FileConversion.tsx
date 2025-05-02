@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { FileType, ArrowRight, FileText, Upload } from "lucide-react";
+import { FileType, ArrowRight, FileText, Upload, Settings } from "lucide-react";
 
 export default function FileConversion() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -34,47 +34,75 @@ export default function FileConversion() {
   };
 
   return (
-    <div className="rounded-2xl bg-white p-4 shadow-sm">
-      <h2 className="mb-3 text-xl font-medium">Convert a File</h2>
+    <div className="rounded-2xl bg-white p-6 shadow-md border border-gray-100">
+      <div className="flex items-center justify-between mb-5">
+        <h2 className="text-xl font-semibold">Convert a File</h2>
+        <Button variant="ghost" className="rounded-full p-2 hover:bg-gray-100">
+          <Settings className="h-5 w-5 text-gray-500" />
+        </Button>
+      </div>
 
-      <div className="mb-3">
-        <p className="mb-2 text-sm font-medium">Conversion Type</p>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5">
+      <div className="mb-5">
+        <p className="mb-3 text-sm font-medium text-gray-700">
+          Conversion Type
+        </p>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
           {conversionTypes.map((conversion) => (
             <button
               key={conversion.name}
-              className={`flex items-center justify-center rounded-lg border p-2 text-center text-xs transition-all hover:bg-white hover:shadow-sm ${
+              className={`flex items-center justify-center rounded-lg border-2 p-3 text-center text-xs transition-all hover:bg-white hover:shadow-md ${
                 selectedConversion === conversion.name
-                  ? "bg-white shadow-sm border-gray-300"
-                  : "bg-transparent"
+                  ? "bg-white shadow-md border-pink-200"
+                  : "bg-transparent border-gray-200"
               }`}
               onClick={() => setSelectedConversion(conversion.name)}
             >
-              {conversion.icon}
-              <span className="ml-1">{conversion.name}</span>
+              <div
+                className={`flex h-8 w-8 items-center justify-center rounded-full ${
+                  selectedConversion === conversion.name
+                    ? "bg-gradient-to-r from-pink-500/10 to-orange-400/10 text-pink-500"
+                    : "bg-gray-100 text-gray-500"
+                } mr-2`}
+              >
+                {conversion.icon}
+              </div>
+              <span className="font-medium">{conversion.name}</span>
             </button>
           ))}
         </div>
       </div>
 
       <div
-        className="mb-3 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 p-4 transition-all hover:border-gray-400"
+        className="mb-5 flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 p-8 transition-all hover:border-pink-300 bg-gray-50"
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
         {selectedFile ? (
           <div className="text-center">
-            <FileText className="mx-auto mb-2 h-8 w-8 text-gray-400" />
-            <p className="mb-1 font-medium">{selectedFile.name}</p>
-            <p className="text-xs text-gray-500">
+            <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-gradient-to-r from-pink-500/20 to-orange-400/20 flex items-center justify-center">
+              <FileText className="h-8 w-8 text-pink-500" />
+            </div>
+            <p className="mb-2 text-lg font-medium">{selectedFile.name}</p>
+            <p className="text-sm text-gray-500 mb-4">
               {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB
             </p>
+            <Button
+              variant="outline"
+              className="rounded-full px-4 py-2 border-pink-200 text-pink-500 hover:bg-pink-50"
+              onClick={() => setSelectedFile(null)}
+            >
+              Choose Different File
+            </Button>
           </div>
         ) : (
           <div className="text-center">
-            <Upload className="mx-auto mb-1 h-8 w-8 text-gray-400" />
-            <p className="mb-1 font-medium">Drag & Drop your file here</p>
-            <p className="mb-2 text-xs text-gray-500">
+            <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-gradient-to-r from-pink-500/20 to-orange-400/20 flex items-center justify-center">
+              <Upload className="h-8 w-8 text-pink-500" />
+            </div>
+            <p className="mb-2 text-lg font-medium">
+              Drag & Drop your file here
+            </p>
+            <p className="mb-4 text-sm text-gray-500">
               or click to browse from your computer
             </p>
             <input
@@ -85,7 +113,7 @@ export default function FileConversion() {
             />
             <label htmlFor="fileInput">
               <Button
-                className="rounded-full px-4 py-2 cursor-pointer text-sm"
+                className="rounded-full px-6 py-2.5 bg-gradient-to-r from-pink-500 to-orange-400 hover:from-pink-600 hover:to-orange-500 text-white shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                 asChild
               >
                 <span>BROWSE FILES</span>
@@ -97,9 +125,9 @@ export default function FileConversion() {
 
       {selectedFile && (
         <div className="flex justify-center">
-          <Button className="rounded-full px-4 py-2 text-sm">
+          <Button className="rounded-full px-8 py-3 bg-gradient-to-r from-pink-500 to-orange-400 hover:from-pink-600 hover:to-orange-500 text-white shadow-md hover:shadow-lg transition-all duration-300">
             CONVERT NOW
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       )}

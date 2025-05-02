@@ -29,7 +29,6 @@ export default function Features() {
 
   return (
     <>
-      {/* Desktop features */}
       <div className="relative hidden lg:flex items-center justify-center">
         <div className="relative w-full max-w-md">
           <div className="absolute -top-16 -left-16 h-32 w-32 rounded-full border-2 border-dashed border-gray-300 opacity-50"></div>
@@ -108,7 +107,6 @@ export default function Features() {
         </div>
       </div>
 
-      {/* Mobile features section */}
       <div className="mt-8 lg:hidden">
         <h3 className="mb-6 text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-orange-400">
           Why Choose UniversalConvert?
