@@ -23,45 +23,67 @@ export default function Hero() {
 
   return (
     <div className="relative flex flex-col justify-center pr-0 lg:pr-10">
-      <h1 className="text-5xl font-light leading-tight tracking-tight sm:text-6xl">
+      <div className="flex items-center mb-2">
+        <div className="h-1.5 w-16 bg-gradient-to-r from-pink-500 to-orange-400 mr-3"></div>
+        <span className="text-sm font-medium text-gray-600">
+          FILE CONVERSION MADE SIMPLE
+        </span>
+      </div>
+
+      <h1 className="text-5xl font-bold leading-tight tracking-tight sm:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">
         CONVERT
         <br />
         ANY FILE
         <br />
-        INSTANTLY.
+        <span className="relative">
+          INSTANTLY
+          <span className="absolute -right-12 top-0 h-3 w-3 animate-ping rounded-full bg-pink-400"></span>
+        </span>
       </h1>
 
-      <p className="mt-4 max-w-xl text-sm leading-relaxed text-gray-600">
-        UniversalConvert supports 100+ file formats including documents, images,
-        audio, video, and more. Convert files quickly with our advanced
-        technology while maintaining the highest quality.
+      <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-600">
+        Transform your files effortlessly with UniversalConvert. Our platform
+        supports
+        <span className="font-semibold"> 100+ file formats</span> including
+        documents, images, audio, video, and more. Experience lightning-fast
+        conversions with our advanced cloud technology while maintaining the
+        highest quality standards.
       </p>
 
-      <div className="mt-6 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-        <Button className="rounded-full px-6 py-5" onClick={handleConvertNow}>
-          CONVERT NOW
-          <ArrowRight className="ml-2 h-4 w-4" />
+      <div className="mt-8 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+        <Button
+          className="rounded-full px-8 py-6 bg-gradient-to-r from-pink-500 to-orange-400 hover:from-pink-600 hover:to-orange-500 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+          onClick={handleConvertNow}
+        >
+          START CONVERTING NOW
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
+        <Button
+          variant="outline"
+          className="rounded-full px-8 py-6 border-2 hover:bg-gray-50"
+        >
+          EXPLORE FEATURES
         </Button>
       </div>
 
-      <div className="mt-8">
-        <div className="flex items-center space-x-2 mb-3">
+      <div className="mt-12">
+        <div className="flex items-center space-x-3 mb-4">
           <span className="text-sm font-medium">POPULAR CONVERSIONS</span>
-          <span className="h-px w-12 bg-black"></span>
+          <span className="h-px w-20 bg-gradient-to-r from-pink-500 to-orange-400"></span>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
           {conversionTypes.map((conversion) => (
             <button
               key={conversion.name}
-              className={`flex items-center justify-center rounded-lg border p-2 text-center text-xs transition-all hover:bg-white hover:shadow-sm ${
+              className={`flex items-center justify-center rounded-lg border-2 p-3 text-center text-xs transition-all hover:bg-white hover:shadow-md ${
                 selectedConversion === conversion.name
-                  ? "bg-white shadow-sm"
+                  ? "bg-white shadow-md border-pink-200"
                   : "bg-transparent"
               }`}
               onClick={() => setSelectedConversion(conversion.name)}
             >
               {conversion.icon}
-              <span className="ml-1">{conversion.name}</span>
+              <span className="ml-2 font-medium">{conversion.name}</span>
             </button>
           ))}
         </div>
