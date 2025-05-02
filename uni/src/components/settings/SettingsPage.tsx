@@ -25,8 +25,8 @@ export default function SettingsPage() {
       <div className="h-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col">
         <Header />
 
-        <main className="flex-1 py-3 overflow-hidden">
-          <div className="h-full grid grid-cols-1 gap-4 lg:grid-cols-4">
+        <main className="flex-1 py-6 overflow-hidden">
+          <div className="h-full grid grid-cols-1 gap-6 lg:grid-cols-4">
             <div className="lg:col-span-1 h-full">
               <SettingsSidebar
                 activeCategory={activeCategory}
@@ -34,8 +34,8 @@ export default function SettingsPage() {
               />
             </div>
 
-            <div className="lg:col-span-3 space-y-4 h-full overflow-auto">
-              <div className="rounded-2xl bg-white p-6 shadow-sm">
+            <div className="lg:col-span-3 h-full overflow-hidden">
+              <div className="rounded-2xl bg-white p-6 shadow-md border border-gray-100 h-full overflow-auto">
                 {activeCategory === "appearance" && (
                   <AppearanceSettings theme={theme} setTheme={setTheme} />
                 )}
@@ -76,6 +76,7 @@ export default function SettingsPage() {
         </main>
       </div>
 
+      {/* Enhanced gradient effects */}
       <div
         className="fixed right-0 top-0 h-[500px] w-[500px] animate-pulse rounded-full bg-gradient-to-br from-pink-400 via-orange-300 to-yellow-200 opacity-30 blur-3xl"
         aria-hidden="true"
