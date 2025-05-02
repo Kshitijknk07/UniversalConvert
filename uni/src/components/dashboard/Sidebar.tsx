@@ -37,7 +37,10 @@ export default function Sidebar() {
             <ChevronRight className="h-4 w-4" />
           </button>
 
-          <button className="flex w-full items-center justify-between rounded-lg p-2 text-sm font-medium hover:bg-gray-100">
+          <button
+            className="flex w-full items-center justify-between rounded-lg p-2 text-sm font-medium hover:bg-gray-100"
+            onClick={() => navigate("/")}
+          >
             <div className="flex items-center space-x-3">
               <LogOut className="h-5 w-5" />
               <span>Logout</span>
