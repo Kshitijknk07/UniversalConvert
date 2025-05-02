@@ -18,7 +18,7 @@ export default function SettingsPage() {
   const [quality, setQuality] = useState<string>("High");
   const [autoDelete, setAutoDelete] = useState<boolean>(true);
   const [autoDeleteDays, setAutoDeleteDays] = useState<number>(30);
-  const [activeCategory, setActiveCategory] = useState("appearance");
+  const [activeCategory, setActiveCategory] = useState("account");
 
   return (
     <div className="h-screen overflow-hidden bg-[#f8f8f8]">
