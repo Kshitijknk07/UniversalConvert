@@ -11,21 +11,12 @@ export default function Header() {
         <div className="h-2 w-2 rounded-full bg-gradient-to-r from-pink-500 to-orange-400"></div>
         <span className="ml-2 font-bold">UniversalConvert</span>
       </div>
-      <div className="hidden md:flex items-center space-x-8">
-        <a href="#" className="text-sm hover:text-pink-500 transition-colors">
-          Features
-        </a>
-        <a href="#" className="text-sm hover:text-pink-500 transition-colors">
-          Pricing
-        </a>
-        <a href="#" className="text-sm hover:text-pink-500 transition-colors">
-          API
-        </a>
-        <a href="#" className="text-sm hover:text-pink-500 transition-colors">
-          Blog
-        </a>
-      </div>
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center space-x-8">
+        <div className="hidden md:flex items-center">
+          <a href="#" className="text-sm hover:text-pink-500 transition-colors">
+            Features
+          </a>
+        </div>
         <select className="text-sm bg-transparent border-none focus:ring-0">
           <option>EN</option>
           <option>ES</option>
