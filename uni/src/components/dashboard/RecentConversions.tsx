@@ -1,9 +1,20 @@
 import { FileText, Download, MoreHorizontal, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function RecentConversions() {
-  const recentConversions: any[] = [];
+interface ConversionItem {
+  name: string;
+  type: string;
+  date: string;
+  size: string;
+}
 
+interface RecentConversionsProps {
+  recentConversions: ConversionItem[];
+}
+
+export default function RecentConversions({
+  recentConversions,
+}: RecentConversionsProps) {
   return (
     <div className="flex-1 rounded-2xl bg-white p-6 shadow-md border border-gray-100 overflow-hidden flex flex-col">
       <div className="mb-5 flex items-center justify-between">
@@ -94,6 +105,9 @@ export default function RecentConversions() {
                       <Button
                         variant="ghost"
                         className="rounded-full p-2 hover:bg-gray-100"
+                        onClick={() => {
+                          // Download dummy file logic can be added here
+                        }}
                       >
                         <Download className="h-4 w-4 text-gray-500" />
                       </Button>

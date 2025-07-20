@@ -1,24 +1,32 @@
 import { FileText, BarChart, Clock } from "lucide-react";
 
-export default function Stats() {
-  const stats = [
+interface StatsProps {
+  stats: {
+    filesConverted: number;
+    storageUsed: number;
+    savedTime: number;
+  };
+}
+
+export default function Stats({ stats }: StatsProps) {
+  const statList = [
     {
       title: "Files Converted",
-      value: "0",
-      change: "0 today",
+      value: stats.filesConverted,
+      change: `${stats.filesConverted} today`,
       icon: <FileText className="h-5 w-5" />,
       color: "from-pink-500 to-orange-400",
     },
     {
       title: "Storage Used",
-      value: "0 MB",
+      value: `${stats.storageUsed.toFixed(2)} MB`,
       change: "of 500 MB",
       icon: <BarChart className="h-5 w-5" />,
       color: "from-blue-500 to-cyan-400",
     },
     {
       title: "Saved Time",
-      value: "0 min",
+      value: `${stats.savedTime} min`,
       change: "this week",
       icon: <Clock className="h-5 w-5" />,
       color: "from-green-500 to-emerald-400",
@@ -27,7 +35,7 @@ export default function Stats() {
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-      {stats.map((stat) => (
+      {statList.map((stat) => (
         <div
           key={stat.title}
           className="rounded-2xl bg-white p-5 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
